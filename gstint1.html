@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Flashcards - 50 Questions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000413 0%, #212122 50%, #353143 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            margin-top: 10px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .chapter-info {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.4rem;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.75rem;
+        }
+        
+        .flashcard-container {
+            perspective: 1000px;
+            margin: 15px auto;
+            width: 100%;
+            height: 220px;
+        }
+        
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+        
+        .flashcard-front {
+            background: linear-gradient(135deg, #012d4a 0%, #022446 100%);
+            color: white;
+        }
+        
+        .flashcard-back {
+            background: linear-gradient(135deg, #014a1f 0%, #013e1a 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .question, .answer {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            max-height: 120px;
+            overflow-y: auto;
+            padding: 5px;
+            width: 100%;
+        }
+        
+        .concept {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        
+        .hint {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 8px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .prev-btn {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .next-btn {
+            background: #3498db;
+            color: white;
+        }
+        
+        .flip-btn {
+            background: #9b59b6;
+            color: white;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 15px 0;
+            height: 8px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border-radius: 8px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        
+        /* Custom scrollbar for cards */
+        .question::-webkit-scrollbar, .answer::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .question::-webkit-scrollbar-thumb, .answer::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 400px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .flashcard-container {
+                height: 200px;
+            }
+            
+            .question, .answer {
+                font-size: 1rem;
+            }
+            
+            button {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .stats {
+                padding: 8px;
+            }
+            
+            .stat-value {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .flashcard-container {
+                height: 250px;
+            }
+            
+            .question, .answer {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GST Flashcards</h1>
+            <div class="chapter-info">50 Questions: Introduction to Goods and Services Tax</div>
+            <a href="index.html" class="back-link">← Back to Chapters</a>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="current-card">1</div>
+                <div class="stat-label">Current</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="total-cards">50</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="mastered">0</div>
+                <div class="stat-label">Mastered</div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front">
+                    <div class="question">What is GST in simple terms?</div>
+                    <div class="concept">GST Basics</div>
+                    <p class="hint">Click to flip</p>
+                </div>
+                <div class="flashcard-back">
+                    <div class="answer">GST is a value-added tax on the supply of goods and services, collected at each stage with credit for taxes paid earlier.</div>
+                    <div class="concept">GST Basics</div>
+                    <p class="hint">Click to flip back</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="prev-btn" id="prev-btn">← Prev</button>
+            <button class="flip-btn" id="flip-btn">Flip</button>
+            <button class="next-btn" id="next-btn">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Flashcard data for GST based on the Word document
+            const flashcards = [
+                { question: "What is GST in simple terms?", answer: "GST is a value-added tax on the supply of goods and services, collected at each stage with credit for taxes paid earlier.", concept: "GST Basics" },
+                { question: "When was GST launched in India?", answer: "GST was launched on 1 July 2017.", concept: "GST Implementation" },
+                { question: "Why was GST needed?", answer: "To remove cascading, unify multiple indirect taxes, and create a seamless national market.", concept: "GST Purpose" },
+                { question: "What kind of tax is GST: origin or destination based?", answer: "GST is a destination-based tax.", concept: "Tax Type" },
+                { question: "What does dual GST mean?", answer: "Both Centre and States simultaneously levy GST on the same transaction base.", concept: "Dual GST" },
+                { question: "Name the four components of GST in India.", answer: "CGST, SGST, UTGST, and IGST.", concept: "GST Components" },
+                { question: "Who levies CGST?", answer: "The Central Government.", concept: "CGST" },
+                { question: "Who levies SGST?", answer: "The respective State Governments/UTs with legislatures.", concept: "SGST" },
+                { question: "Who levies UTGST?", answer: "The Central Government for union territories without legislatures.", concept: "UTGST" },
+                { question: "Who levies IGST?", answer: "The Central Government on inter-State supplies.", concept: "IGST" },
+                { question: "What is taxed under GST: manufacture, sale, or supply?", answer: "GST is levied on the supply of goods and/or services.", concept: "Taxable Event" },
+                { question: "Which key taxes were subsumed by GST?", answer: "Central excise, service tax, VAT/CST, entry tax, luxury tax, entertainment tax (except local bodies), and related cesses.", concept: "Subsumed Taxes" },
+                { question: "Is customs duty subsumed in GST?", answer: "No; basic customs duty continues outside GST.", concept: "Customs Duty" },
+                { question: "Is alcoholic liquor for human consumption under GST?", answer: "No, it is outside GST; states levy excise/VAT/CST as applicable.", concept: "Excluded Items" },
+                { question: "Are petroleum products under GST today?", answer: "Petrol, diesel, crude, ATF, and natural gas are excluded until a date notified on GST Council's recommendation.", concept: "Petroleum Products" },
+                { question: "Is tobacco under GST?", answer: "Yes, and central excise on tobacco products also continues.", concept: "Tobacco" },
+                { question: "Are opium and Indian hemp under GST?", answer: "Yes, and State excise on such products manufactured in India also continues.", concept: "Narcotics" },
+                { question: "What constitutional article grants power to levy GST?", answer: "Article 246A.", concept: "Constitutional Basis" },
+                { question: "Who has exclusive power over inter-State GST lawmaking?", answer: "Parliament under Article 246A(2).", concept: "Legislative Power" },
+                { question: "Which article governs levy and collection of IGST?", answer: "Article 269A.", concept: "IGST Law" },
+                { question: "How are imports treated under GST?", answer: "Imports are deemed inter-State supplies and attract IGST (plus applicable customs).", concept: "Imports" },
+                { question: "Which article created the GST Council?", answer: "Article 279A.", concept: "GST Council" },
+                { question: "Who chairs the GST Council?", answer: "The Union Finance Minister.", concept: "GST Council" },
+                { question: "What does the GST Council recommend?", answer: "Tax rates, exemptions, thresholds, place of supply principles, and other GST policy matters.", concept: "GST Council Functions" },
+                { question: "What is the GST common portal?", answer: "www.gst.gov.in, operated by GSTN, for registration, returns, payments, and more.", concept: "GST Portal" },
+                { question: "What is the e-way bill portal?", answer: "www.ewaybillgst.gov.in, for generating e-way bills for movement of goods.", concept: "E-way Bill" },
+                { question: "What is the e-invoice IRP?", answer: "NIC-managed Invoice Registration Portal for notified taxpayers to register e-invoices.", concept: "E-invoicing" },
+                { question: "What is HSN?", answer: "Harmonised System of Nomenclature used to classify goods under GST.", concept: "Classification" },
+                { question: "What is SAC?", answer: "Services Accounting Code used to classify services under GST.", concept: "Classification" },
+                { question: "What is the composition scheme?", answer: "A simplified levy at fixed rates for small taxpayers making intra-State supplies, with reduced compliance.", concept: "Composition Scheme" },
+                { question: "What does seamless ITC mean?", answer: "Input tax credit flows across the supply chain, minimizing cascading.", concept: "Input Tax Credit" },
+                { question: "Can CGST credit pay SGST liability?", answer: "No; CGST credit cannot be used to pay SGST/UTGST and vice versa.", concept: "Credit Utilization" },
+                { question: "In what order is IGST credit utilized?", answer: "First against IGST, then CGST and SGST/UTGST in any order and proportion.", concept: "Credit Utilization" },
+                { question: "What is the primary benefit of GST to the economy?", answer: "Creation of a unified national market and improved ease of doing business.", concept: "GST Benefits" },
+                { question: "How does GST support 'Make in India'?", answer: "By reducing cascading and aligning taxes on imports and domestic supplies, improving competitiveness.", concept: "Economic Impact" },
+                { question: "How does GST impact small businesses?", answer: "Higher thresholds, composition scheme, and simplified online compliance.", concept: "Small Businesses" },
+                { question: "What is the nature of GST compliance?", answer: "Largely technology-driven via the GST portal with automated processes.", concept: "Compliance" },
+                { question: "What are GSPs/ASPs in GST?", answer: "GST Suvidha Providers and Application Service Providers offering compliance solutions interfacing with GSTN.", concept: "Service Providers" },
+                { question: "What is Compensation Cess?", answer: "A cess on specified luxury/sin goods to compensate states for revenue loss; extended up to 31 March 2026 for levy/collection.", concept: "Compensation Cess" },
+                { question: "What principle governs revenue on inter-State supplies?", answer: "IGST is levied and apportioned between Centre and States per law based on GST Council recommendations.", concept: "Revenue Sharing" },
+                { question: "How are inter-State credits settled?", answer: "Set-off adjustments trigger fund transfers between Centre and States as per Article 269A mechanisms.", concept: "Credit Settlement" },
+                { question: "What replaced CVD/Special CVD on imports after GST?", answer: "IGST on imports, alongside basic customs duty.", concept: "Import Taxes" },
+                { question: "Which chapter of the customs tariff is used for GST goods classification?", answer: "HSN chapters from the First Schedule to the Customs Tariff Act, 1975.", concept: "Classification" },
+                { question: "Is real estate sale of immovable property under GST?", answer: "Sale of immovable property is outside GST; GST applies to construction services under specific conditions.", concept: "Real Estate" },
+                { question: "What is the threshold concept in GST registration?", answer: "Registration is required when aggregate turnover exceeds notified thresholds, varying by State/category.", concept: "Registration" },
+                { question: "Does GST apply equally to goods and services?", answer: "Yes, GST integrates taxation of goods and services under a common framework.", concept: "GST Scope" },
+                { question: "How does GST reduce 'tax on tax'?", answer: "Through a comprehensive input tax credit mechanism across stages.", concept: "Tax Cascading" },
+                { question: "Who formulates place of supply principles?", answer: "Parliament, by law, as enabled by Article 269A(5).", concept: "Place of Supply" },
+                { question: "What ensures uniformity across SGST laws?", answer: "Harmonized core features like charge, definitions, valuation, and procedures across States.", concept: "Uniformity" },
+                { question: "What is the core idea of GST in one phrase?", answer: "One Nation, One Tax on the supply of goods and services with seamless credit.", concept: "GST Concept" }
+            ];
+            
+            // DOM elements
+            const flashcardElement = document.getElementById('flashcard');
+            const questionElement = document.querySelector('.question');
+            const answerElement = document.querySelector('.answer');
+            const conceptElement = document.querySelector('.concept');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const flipBtn = document.getElementById('flip-btn');
+            const currentCardElement = document.getElementById('current-card');
+            const totalCardsElement = document.getElementById('total-cards');
+            const progressBar = document.getElementById('progress-bar');
+            
+            // Initialize variables
+            let currentCardIndex = 0;
+            totalCardsElement.textContent = flashcards.length;
+            
+            // Update progress bar
+            function updateProgressBar() {
+                const progress = ((currentCardIndex + 1) / flashcards.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            // Display current card
+            function displayCard() {
+                const currentCard = flashcards[currentCardIndex];
+                questionElement.textContent = currentCard.question;
+                answerElement.textContent = currentCard.answer;
+                conceptElement.textContent = currentCard.concept;
+                currentCardElement.textContent = currentCardIndex + 1;
+                
+                // Reset card to front
+                flashcardElement.classList.remove('flipped');
+                
+                // Update progress
+                updateProgressBar();
+            }
+            
+            // Next card
+            nextBtn.addEventListener('click', function() {
+                currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+                displayCard();
+            });
+            
+            // Previous card
+            prevBtn.addEventListener('click', function() {
+                currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
+                displayCard();
+            });
+            
+            // Flip card
+            flipBtn.addEventListener('click', function() {
+                flashcardElement.classList.toggle('flipped');
+            });
+            
+            // Also flip when clicking on the card
+            flashcardElement.addEventListener('click', function() {
+                flashcardElement.classList.toggle('flipped');
+            });
+            
+            // Initialize
+            displayCard();
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                } else if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === ' ' || e.key === 'Enter') {
+                    flashcardElement.classList.toggle('flipped');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
