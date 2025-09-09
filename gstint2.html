@@ -1,278 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Stock Market Investing: Complete Guide</title>
-<style>
-  :root{
-    --bg:#0b1220; --card:#121a2b; --text:#e9eef7; --muted:#a9b6cc;
-    --accent:#6bc4ff; --accent2:#8ef0a5; --warn:#ffdf6b; --danger:#ff8a8a;
-    --ok:#8ef0a5;
-  }
-  html,body{margin:0;background:var(--bg);color:var(--text);
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-    line-height:1.65}
-  .container{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}
-  header{text-align:center;margin-bottom:1.5rem}
-  h1{font-size:clamp(1.8rem,2.6vw,2.6rem);margin:.3rem 0 .2rem}
-  h2{font-size:clamp(1.3rem,2vw,1.6rem);margin:1.6rem 0 .4rem;color:var(--accent)}
-  h3{font-size:1.05rem;margin:1rem 0 .25rem;color:var(--accent2)}
-  p,li{color:var(--text)}
-  .muted{color:var(--muted)}
-  .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-    border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1rem;margin:1rem 0}
-  .grid{display:grid;gap:1rem}
-  .grid-2{grid-template-columns:1fr}
-  .grid-3{grid-template-columns:1fr}
-  @media(min-width:900px){
-    .grid-2{grid-template-columns:1fr 1fr}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-  }
-  .pill{display:inline-block;background:rgba(107,196,255,.12);color:var(--accent);
-    border:1px solid rgba(107,196,255,.35);padding:.2rem .55rem;border-radius:999px;
-    font-size:.85rem;margin:.15rem .35rem .15rem 0}
-  .note{border-left:4px solid var(--warn);background:rgba(255,223,107,.1);
-    padding:.8rem;border-radius:8px;color:#fff7d1}
-  .risk{border-left:4px solid var(--danger);background:rgba(255,138,138,.1);
-    padding:.8rem;border-radius:8px}
-  .ok{border-left:4px solid var(--ok);background:rgba(142,240,165,.1);
-    padding:.8rem;border-radius:8px}
-  figure{margin:0}
-  img{max-width:100%;height:auto;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
-  figcaption{font-size:.9rem;color:var(--muted);margin-top:.25rem}
-  .table{width:100%;border-collapse:collapse;background:rgba(255,255,255,.02);
-    border:1px solid rgba(255,255,255,.12);border-radius:10px;overflow:hidden}
-  .table th,.table td{padding:.7rem .6rem;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top}
-  .table th{text-align:left;background:rgba(255,255,255,.04);color:var(--accent)}
-  .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:#0a0f1c;
-    border:1px solid rgba(255,255,255,.12);padding:.05rem .35rem;border-radius:6px;font-size:.9rem}
-  .hero{position:relative;overflow:hidden;border-radius:14px;
-    background:radial-gradient(1000px 500px at 10% -10%,rgba(107,196,255,.12),transparent 60%),
-               radial-gradient(1000px 500px at 90% 120%,rgba(142,240,165,.13),transparent 60%),
-               linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-    border:1px solid rgba(255,255,255,.1);padding:1.1rem;margin-bottom:1.2rem}
-  .toc a{color:var(--accent);text-decoration:none}
-  .toc a:hover{text-decoration:underline}
-  /* 0.5 inch margins visually on screen */
-  html, body{margin:0.5in;box-sizing:border-box;height:auto}
-  *,*::before,*::after{box-sizing:inherit}
-  @media print{
-    html,body{margin:0}
-    @page{margin:0.5in}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GST Flashcards - Chapter 2</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #000413 0%, #212122 50%, #353143 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            margin-top: 10px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .chapter-info {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.4rem;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.75rem;
+        }
+        
+        .flashcard-container {
+            perspective: 1000px;
+            margin: 15px auto;
+            width: 100%;
+            height: 220px;
+        }
+        
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+        
+        .flashcard-front {
+            background: linear-gradient(135deg, #012d4a 0%, #022446 100%);
+            color: white;
+        }
+        
+        .flashcard-back {
+            background: linear-gradient(135deg, #014a1f 0%, #013e1a 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .question, .answer {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            max-height: 120px;
+            overflow-y: auto;
+            padding: 5px;
+            width: 100%;
+        }
+        
+        .concept {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        
+        .hint {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 8px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .prev-btn {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .next-btn {
+            background: #3498db;
+            color: white;
+        }
+        
+        .flip-btn {
+            background: #9b59b6;
+            color: white;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background: #ecf0f1;
+            border-radius: 8px;
+            margin: 15px 0;
+            height: 8px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border-radius: 8px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        
+        /* Custom scrollbar for cards */
+        .question::-webkit-scrollbar, .answer::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .question::-webkit-scrollbar-thumb, .answer::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 400px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .flashcard-container {
+                height: 200px;
+            }
+            
+            .question, .answer {
+                font-size: 1rem;
+            }
+            
+            button {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .stats {
+                padding: 8px;
+            }
+            
+            .stat-value {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .flashcard-container {
+                height: 250px;
+            }
+            
+            .question, .answer {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header class="hero">
-      <h1>Stock Market Investing: A Complete Guide</h1>
-      <p class="muted">Definitions, how markets work, ways to pick stocks, and strategies to manage risk, designed for an approximately 10‑minute read.</p>
-      <div>
-        <span class="pill">Basics</span>
-        <span class="pill">Fundamentals</span>
-        <span class="pill">Valuation</span>
-        <span class="pill">Risk</span>
-        <span class="pill">Strategy</span>
-      </div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>GST Flashcards</h1>
+            <div class="chapter-info">Chapter 2: Supply under GST</div>
+            <a href="index.html" class="back-link">← Back to Chapters</a>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="current-card">1</div>
+                <div class="stat-label">Current</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="total-cards">51</div>
+                <div class="stat-label">Total</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="mastered">0</div>
+                <div class="stat-label">Mastered</div>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-front">
+                    <div class="question">What is considered the "foundation stone" of any taxation system, and what does it determine?</div>
+                    <div class="concept">Taxable Event</div>
+                    <p class="hint">Click to flip</p>
+                </div>
+                <div class="flashcard-back">
+                    <div class="answer">The foundation stone of any taxation system is the taxable event. It determines the point at which tax would be levied on a transaction or occurrence.</div>
+                    <div class="concept">Taxable Event</div>
+                    <p class="hint">Click to flip back</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="prev-btn" id="prev-btn">← Prev</button>
+            <button class="flip-btn" id="flip-btn">Flip</button>
+            <button class="next-btn" id="next-btn">Next →</button>
+        </div>
+    </div>
 
-    <nav class="card toc">
-      <strong>Contents</strong>
-      <ul>
-        <li><a href="#terms">Key terms: stock, share, market</a></li>
-        <li><a href="#how-market-works">How the stock market works</a></li>
-        <li><a href="#valuation">Valuation metrics</a></li>
-        <li><a href="#selecting-stocks">Strategies to select stocks</a></li>
-        <li><a href="#risk">Risks and how to reduce them</a></li>
-        <li><a href="#building-portfolio">Building and maintaining a portfolio</a></li>
-        <li><a href="#checklist">Beginner checklist</a></li>
-        <li><a href="#glossary">Mini‑glossary</a></li>
-      </ul>
-    </nav>
-
-    <section id="terms">
-      <h2>Key terms: stock, share, market</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Stock vs. Share</h3>
-          <p>A stock is the overall equity of a company traded in the market; a share is a single unit of ownership of that stock (e.g., owning 100 shares of Company A’s stock). Common stock usually includes voting rights and potential dividends; preferred stock typically has priority dividends but limited voting rights.</p>
-        </div>
-        <div class="card">
-          <h3>The Stock Market</h3>
-          <p>The stock market is a network of exchanges and electronic venues where buyers and sellers trade company shares, facilitating price discovery and capital raising via IPOs and secondary offerings. Markets match orders and report trades to maintain transparency and liquidity.</p>
-        </div>
-      </div>
-      <figure class="card">
-        <img alt="Illustration of stock market order flow" src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1400&auto=format&fit=crop" />
-        <figcaption>From capital raising to secondary trading, exchanges provide standardized venues for price discovery. Image courtesy of Unsplash.</figcaption>
-      </figure>
-    </section>
-
-    <section id="how-market-works">
-      <h2>How the stock market works</h2>
-      <div class="card">
-        <h3>Primary vs. Secondary Markets</h3>
-        <p>In primary markets, companies sell new shares to investors (e.g., IPOs) to raise capital; in secondary markets, investors trade existing shares with each other, and prices fluctuate based on supply, demand, and expectations.</p>
-      </div>
-      <div class="grid grid-3">
-        <div class="card">
-          <h3>Order Types</h3>
-          <p>Common orders include market orders (execute immediately at current prices) and limit orders (execute at a specified price or better), plus stop/stop‑limit for risk control and trailing stops for dynamic exits.</p>
-        </div>
-        <div class="card">
-          <h3>Indices</h3>
-          <p>Indices like broad or sector benchmarks track groups of stocks to indicate market or segment performance, and are widely used as passive investment targets via index funds and ETFs.</p>
-        </div>
-        <div class="card">
-          <h3>Returns & Taxes</h3>
-          <p>Investor returns come from price appreciation and dividends; total return combines both. Tax treatment varies by jurisdiction and account type; planning often pairs strategy with tax‑efficient vehicles.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="valuation">
-      <h2>Valuation metrics</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>P/E Ratio</h3>
-          <p>The price‑to‑earnings ratio compares a company’s share price to its earnings per share; it’s used to gauge valuation versus history, peers, and the market, noting growth prospects and cyclicality.</p>
-        </div>
-        <div class="card">
-          <h3>Other Metrics</h3>
-          <p>Additional metrics include price‑to‑book (P/B), price‑to‑sales (P/S), dividend yield and payout ratio, return on equity (ROE), and free cash flow yield for assessing efficiency, quality, and income.</p>
-        </div>
-      </div>
-      <figure class="card">
-        <img alt="Sample P/E distribution style visual" src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1400&auto=format&fit=crop" />
-        <figcaption>Valuation should be interpreted relative to growth, profitability, and balance sheet strength. </figcaption>
-      </figure>
-      <div class="note">Tip: Compare a company’s valuation to its sector and its own history, not just to the overall market.</div>
-    </section>
-
-    <section id="selecting-stocks">
-      <h2>Strategies to select stocks</h2>
-      <table class="table card">
-        <thead>
-          <tr><th>Approach</th><th>What it focuses on</th><th>When it helps</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Value</strong></td>
-            <td>Buying below estimated intrinsic value using metrics like P/E, P/B, FCF yield.</td>
-            <td>Mean‑reversion markets; when pessimism overshoots fundamentals.</td>
-          </tr>
-          <tr>
-            <td><strong>Growth</strong></td>
-            <td>Revenue/EPS growth, TAM, margins, reinvestment runway, competitive moats.</td>
-            <td>Structural innovation cycles and secular trends.</td>
-          </tr>
-          <tr>
-            <td><strong>Dividend/Income</strong></td>
-            <td>Dividend yield, payout safety, growth consistency, cash flow coverage.</td>
-            <td>Income needs and lower‑volatility objectives.</td>
-          </tr>
-          <tr>
-            <td><strong>Indexing</strong></td>
-            <td>Low‑cost broad diversification via index funds/ETFs to match the market.</td>
-            <td>Long‑term compounding with minimal selection risk.</td>
-          </tr>
-          <tr>
-            <td><strong>Factor Blends</strong></td>
-            <td>Rules‑based tilts like quality, value, momentum, low‑volatility.</td>
-            <td>Systematic diversification across drivers of returns.</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Fundamental Analysis</h3>
-          <p>Study financial statements, unit economics, industry structure, and management quality to estimate intrinsic value and risk‑adjusted return potential over a multi‑year horizon.</p>
-        </div>
-        <div class="card">
-          <h3>Technical & Sentiment</h3>
-          <p>Use price/volume trends, moving averages, support/resistance, and market breadth to inform timing and risk, complementing—but not replacing—fundamentals.</p>
-        </div>
-      </div>
-      <figure class="card">
-        <img alt="Simple price trend chart aesthetic" src="https://images.unsplash.com/photo-1518186233392-c232efbf2373?q=80&w=1400&auto=format&fit=crop" />
-        <figcaption>Combine fundamental conviction with rules for entries, position sizing, and exits to improve outcomes.</figcaption>
-      </figure>
-    </section>
-
-    <section id="risk">
-      <h2>Risks and how to reduce them</h2>
-      <div class="risk card">
-        <h3>Major Risk Types</h3>
-        <ul>
-          <li>Systematic (market) risk from macro shocks, rates, and geopolitics affects most stocks simultaneously.</li>
-          <li>Unsystematic (company/industry) risk stems from idiosyncratic events like competition, execution, or governance.</li>
-          <li>Liquidity and operational risks include wide spreads, thin volume, platform outages, and cyber issues.</li>
-        </ul>
-      </div>
-      <div class="ok card">
-        <h3>Risk Reduction Toolkit</h3>
-        <ul>
-          <li>Diversification across sectors, styles, and regions lowers single‑name and sector concentration risk.</li>
-          <li>Asset allocation blends stocks with bonds/cash/alternatives; periodic rebalancing maintains target risk.</li>
-          <li>Position sizing and the 1–2% per‑position risk rule help cap drawdowns; stops/alerts enforce discipline.</li>
-          <li>Dollar‑cost averaging (DCA) smooths entry timing risk by investing fixed amounts on a schedule.</li>
-          <li>Due diligence on financials, valuation, and quality reduces avoidable idiosyncratic risks.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="building-portfolio">
-      <h2>Building and maintaining a portfolio</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Starting Steps</h3>
-          <p>Define goals and horizon, pick a broker, choose a core approach (indexing or a diversified core) and add active tilts only with clear rationale and risk limits.</p>
-        </div>
-        <div class="card">
-          <h3>Ongoing Process</h3>
-          <p>Schedule reviews to rebalance, evaluate thesis changes, and update risk controls; keep costs and taxes in view to protect net returns over time.</p>
-        </div>
-      </div>
-      <figure class="card">
-        <img alt="Asset allocation visual" src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&w=1400&auto=format&fit=crop" />
-        <figcaption>Asset allocation and periodic rebalancing are key drivers of long‑run portfolio behavior.</figcaption>
-      </figure>
-    </section>
-
-    <section id="checklist">
-      <h2>Beginner checklist</h2>
-      <div class="card">
-        <ul>
-          <li>Write down objective, horizon, and risk tolerance; choose an approach (index core plus optional tilts).</li>
-          <li>Automate contributions (DCA), diversify broadly, and cap single‑name weights.</li>
-          <li>Use limits for entries, define exits, and set max loss per position/portfolio.</li>
-          <li>Review/rebalance at a fixed cadence; avoid strategy drift from short‑term noise.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="glossary">
-      <h2>Mini‑glossary</h2>
-      <div class="grid grid-3">
-        <div class="card">
-          <h3>Market Cap</h3>
-          <p>Share price × shares outstanding; rough measure of company size and market value.</p>
-        </div>
-        <div class="card">
-          <h3>Dividend Yield</h3>
-          <p>Annual dividend ÷ share price; income rate that must be weighed against payout safety and growth.</p>
-        </div>
-        <div class="card">
-          <h3>Volatility</h3>
-          <p>Degree of price fluctuation; affects drawdowns and required risk controls in portfolio design.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="muted" style="margin-top:2rem">
-      <p>Educational content only—no investment advice. Consider personal circumstances and local regulations before investing.</p>
-    </footer>
-  </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Flashcard data for GST Chapter 2
+            const flashcards = [
+                { question: "What is considered the \"foundation stone\" of any taxation system, and what does it determine?", answer: "The foundation stone of any taxation system is the taxable event. It determines the point at which tax would be levied on a transaction or occurrence.", concept: "Taxable Event" },
+                { question: "How did the GST laws resolve the issues of interpretation and litigation present in the earlier indirect tax regime concerning taxable events?", answer: "By laying down one comprehensive taxable event, which is \"Supply\" of goods or services or both. This replaced various distinct taxable events like manufacture, sale, and rendering of service.", concept: "GST Reform" },
+                { question: "According to Section 2(52) of the CGST Act, what constitutes \"Goods\"?", answer: "Goods means every kind of movable property other than money and securities. It includes actionable claims, growing crops, grass, and things attached to land which are agreed to be severed before or under a contract of supply.", concept: "Definition of Goods" },
+                { question: "How is \"Services\" defined under Section 2(102) of the CGST Act, and what is specifically included in this definition?", answer: "Services means anything other than goods, money, and securities. It includes activities related to the use or conversion of money for which a separate consideration is charged, as well as facilitating or arranging transactions in securities.", concept: "Definition of Services" },
+                { question: "What does the term \"Consideration\" include in relation to the supply of goods or services or both, as per Section 2(31)?", answer: "Consideration includes any payment made or to be made, whether in money or otherwise, or the monetary value of any act or forbearance, in respect of a supply. It can be made by the recipient or any other person, but excludes subsidies from Central or State Governments.", concept: "Consideration" },
+                { question: "When is a deposit given for the supply of goods or services or both considered as payment for such supply?", answer: "A deposit given in respect of the supply of goods or services or both is not considered as payment for such supply unless the supplier specifically applies such deposit as consideration for the said supply.", concept: "Deposits" },
+                { question: "What is an \"Actionable claim\" as per the CGST Act?", answer: "An actionable claim is a claim to any debt, other than a debt secured by mortgage or hypothecation, or to a beneficial interest in movable property not in the claimant's possession, which civil courts recognize as grounds for relief.", concept: "Actionable Claim" },
+                { question: "Define \"Manufacture\" according to Section 2(72) of the CGST Act.", answer: "Manufacture means processing raw material or inputs in a manner that results in the emergence of a new product having a distinct name, character, and use. The term \"manufacturer\" is construed accordingly.", concept: "Manufacture" },
+                { question: "What is the scope of \"Money\" as defined in Section 2(75) of the CGST Act?", answer: "Money means Indian legal tender or any foreign currency, cheque, promissory note, bill of exchange, letter of credit, draft, or any other RBI-recognized instrument when used as consideration to settle an obligation or exchange. It does not include currency held for its numismatic value.", concept: "Money" },
+                { question: "What are the three main parameters for understanding the meaning and scope of \"Supply\" under GST, as per Section 7(1)(a)?", answer: "The three main parameters are that the supply should be of goods or services, it should be made for a consideration, and it should be made in the course or furtherance of business.", concept: "Supply Parameters" },
+                { question: "What are some illustrative forms of supply mentioned in Section 7(1)(a)?", answer: "The illustrative forms of supply include sale, transfer, barter, exchange, licence, rental, lease, or disposal. These forms are not exhaustive, but rather indicative of the broad scope of supply.", concept: "Forms of Supply" },
+                { question: "Explain the difference between \"barter\" and \"exchange\" in the context of supply.", answer: "Barter involves exchanging goods or services directly for other goods or services without using money. Exchange may involve a situation where goods are paid for partly in goods and partly in money.", concept: "Barter vs Exchange" },
+                { question: "How are licenses, leases, and rentals of goods generally treated under GST, particularly regarding the transfer of title?", answer: "Under GST, such licenses, leases, and rentals of goods are typically covered under the supply of service, with or without the transfer of the right to use. This is because there is no transfer of title in such supplies.", concept: "Licenses and Leases" },
+                { question: "What is the \"quid pro quo\" principle in relation to consideration, particularly for donations received by charitable institutions?", answer: "Quid pro quo means \"something for something.\" For donations to be considered supply, there must be an obligation on the recipient to perform a service in return, not merely an expression of gratitude or public recognition.", concept: "Quid Pro Quo" },
+                { question: "Under what conditions are donations to charitable institutions not subject to GST liability?", answer: "GST is not leviable on donations if the gift or donation is made to a charitable organization, the payment has the character of a gift, and the purpose is philanthropic, leading to no commercial gain or advertisement for the donor.", concept: "Donations" },
+                { question: "When do art works sent by artists to galleries for exhibition become a taxable supply under GST?", answer: "Art works sent to galleries for exhibition are not a supply because no consideration flows from the gallery to the artist at that stage. The actual supply, and applicable GST, takes place only when a buyer selects and purchases the artwork.", concept: "Artworks" },
+                { question: "Why is \"No Claim Bonus\" (NCB) not considered a consideration for a supply by the insured to the insurance company?", answer: "The insured is not under a contractual obligation not to claim insurance in lieu of NCB. Therefore, the NCB deduction is not considered payment for a supply provided by the insured to the insurance company for refraining from lodging a claim.", concept: "No Claim Bonus" },
+                { question: "Why is GST primarily a tax on commercial transactions, and what does this imply for supplies made in a personal capacity?", answer: "GST is essentially a tax only on commercial transactions, meaning supplies must be \"in the course or furtherance of business\" to qualify. Consequently, most supplies made by individuals in their personal capacity generally fall outside the ambit of GST.", concept: "Commercial Transactions" },
+                { question: "What does the definition of \"business\" under Section 2(17) include, even without monetary benefit?", answer: "Business includes any trade, commerce, manufacture, profession, vocation, adventure, wager, or similar activity, whether or not undertaken for a monetary benefit. It also covers incidental or ancillary activities and the provision of facilities by clubs to members for consideration.", concept: "Definition of Business" },
+                { question: "Are supplies made by an individual in their personal capacity always outside the ambit of GST?", answer: "Generally, yes, supplies made by an individual in their personal capacity do not come under GST unless they fall within the definition of \"business.\" However, if a supply is deemed to be made in the course or furtherance of business, it could be taxable.", concept: "Personal Capacity Supplies" },
+                { question: "How does the GST law treat the importation of services for a consideration, regardless of the business aspect?", answer: "The importation of services for a consideration is treated as \"supply\" under GST, whether or not it is in the course or furtherance of business. This is a unique exception to the general requirement that a supply must be in the course or furtherance of business.", concept: "Importation of Services" },
+                { question: "What is the significance of Schedule I of the CGST Act regarding \"supply\"?", answer: "Schedule I specifies activities that are treated as \"supply\" even if made without consideration. This is an important departure from the earlier indirect tax regime where consideration was always a prerequisite for tax levy.", concept: "Schedule I" },
+                { question: "Under what conditions does the permanent transfer or disposal of business assets, even without consideration, qualify as a supply?", answer: "The permanent transfer or disposal of business assets without consideration qualifies as supply only if input tax credit (ITC) has been availed on such assets. If ITC was blocked or not availed, it is not deemed a supply under this provision.", concept: "Transfer of Business Assets" },
+                { question: "When are supplies between \"related persons\" or \"distinct persons\" treated as supply even without consideration?", answer: "Supplies of goods or services or both between related persons or distinct persons, as specified in Section 25, qualify as supply even without consideration, provided they are made in the course or furtherance of business.", concept: "Related Persons" },
+                { question: "What is the exception to treating gifts from an employer to an employee as a supply under Schedule I?", answer: "Gifts not exceeding fifty thousand rupees in value in a financial year by an employer to an employee are explicitly not treated as a supply of goods or services or both. Gifts exceeding this value, if without consideration and in the course of business, would be supply.", concept: "Gifts to Employees" },
+                { question: "What is the deciding factor in determining if a principal-agent relationship falls within the ambit of Para 3 of Schedule I for supply of goods without consideration?", answer: "The crucial point is whether the agent issues the invoice for the further supply of goods to the customer in his own name. If the agent issues the invoice in their own name, then the provision of goods between principal and agent falls under Para 3.", concept: "Principal-Agent Relationship" },
+                { question: "How does the GST law treat the supply of services between a principal and an agent without consideration?", answer: "Unlike the supply of goods, the supply of services between a principal and an agent, and vice versa, specifically requires \"consideration\" to be present to be considered a supply and thus be liable to GST.", concept: "Services Between Principal and Agent" },
+                { question: "What is the clarification regarding the temporary short-term loan extended by a Del-credere agent (DCA) to a buyer, when the DCA is not an agent under Para 3 of Schedule I?", answer: "In this scenario, the loan provided by the DCA to the buyer is considered an independent supply of service on a Principal to Principal basis. Therefore, the interest charged by the DCA on this loan would not be included in the value of goods supplied by the principal.", concept: "Del-credere Agent" },
+                { question: "How is the interest charged by a Del-credere agent (DCA) for delayed payment treated when the DCA is an agent under Para 3 of Schedule I?", answer: "If the DCA is an agent, the extension of credit to the recipient no longer retains its character of an independent supply. The value of the interest charged for such credit must be included in the value of supply of goods by the DCA to the recipient.", concept: "Del-credere Agent Interest" },
+                { question: "Under what specific condition is the importation of services from a related person or establishment outside India, without consideration, treated as \"supply\"?", answer: "Importation of services by a person from a related person or from any of his other establishments outside India, without consideration, shall be treated as \"supply\" only if it is made in the course or furtherance of business.", concept: "Importation from Related Persons" },
+                { question: "How are \"Buy One, Get One Free\" offers treated under GST, and what determines their taxability?", answer: "Such offers are not considered individual free supplies but rather a single supply of two or more items for a combined price. Their taxability depends on whether they constitute a composite supply or a mixed supply, determining the applicable tax rate.", concept: "Buy One Get One Free" },
+                { question: "What does Section 7(1)(aa) clarify regarding activities between a person, other than an individual, and its members/constituents?", answer: "Section 7(1)(aa) clarifies that activities or transactions between a person (like an association or club) and its members or constituents, for consideration, are covered within the ambit of 'supply.' The explanation deems them as two separate persons.", concept: "Section 7(1)(aa)" },
+                { question: "What historical legal doctrine did the explanation to Section 7(1)(aa) effectively overrule concerning transactions between clubs and their members?", answer: "The explanation to Section 7(1)(aa) effectively overrules the doctrine of mutuality. This doctrine previously held that transactions between a club and its members could not be taxed because a person cannot make a profit from himself.", concept: "Doctrine of Mutuality" },
+                { question: "What is the purpose of Schedule II to the CGST Act in relation to \"supply\"?", answer: "Schedule II classifies certain activities or transactions, which constitute a supply, either as a supply of goods or a supply of services. This aims to mitigate ambiguities and address complex issues that led to litigation in the earlier tax regime.", concept: "Schedule II" },
+                { question: "How is the \"supply by a restaurant\" treated under GST, particularly concerning the serving of food?", answer: "Supply by a restaurant is treated as a composite supply where food and service are naturally bundled. Schedule II specifically treats this composite supply as a supply of service, and the entire invoice value is taxable as such.", concept: "Restaurant Supply" },
+                { question: "According to Schedule II, how is \"any transfer of title in goods\" classified?", answer: "Any transfer of title in goods is classified as a supply of goods. This includes immediate transfers and transfers under an agreement where property passes at a future date upon full consideration.", concept: "Transfer of Title" },
+                { question: "How is \"any transfer of right in goods without transfer of title\" classified under Schedule II?", answer: "Any transfer of right in goods or undivided share in goods without the transfer of title is classified as a supply of services. This would apply to transactions like renting machinery.", concept: "Transfer of Right" },
+                { question: "When are goods forming part of business assets, upon a person ceasing to be taxable, deemed to be supplied?", answer: "Goods forming part of assets of any business carried on by a person who ceases to be a taxable person are deemed to be supplied by him immediately before he ceases to be a taxable person, in the course or furtherance of his business.", concept: "Ceasing to be Taxable" },
+                { question: "What is the treatment of \"Construction of a complex, building, civil structure, etc. intended for sale to a buyer\" under Schedule II, and what is a key exception?", answer: "Construction of a complex or building intended for sale is generally treated as a supply of services. The key exception is when the entire consideration has been received after the issuance of the completion certificate or after its first occupation, whichever is earlier.", concept: "Construction Services" },
+                { question: "What three types of obligations are specifically declared as a supply of service under Para 5(e) of Schedule II?", answer: "Para 5(e) declares \"agreeing to the obligation to refrain from an act,\" \"to tolerate an act or a situation,\" or \"to do an act\" as a supply of service, provided it constitutes a supply under the CGST Act.", concept: "Obligations as Service" },
+                { question: "What is the meaning of \"Non-Supplies under GST,\" and where are they primarily listed?", answer: "Non-Supplies under GST are activities or transactions that are treated neither as a supply of goods nor a supply of services. These are primarily specified in Schedule III to the CGST Act, effectively forming a \"Negative list.\"", concept: "Non-Supplies" },
+                { question: "What is the GST treatment of \"services by an employee to the employer in the course of or in relation to his employment\"?", answer: "Services provided by an employee to the employer in the course of or in relation to his employment are explicitly treated as neither a supply of goods nor a supply of services, as per Schedule III to the CGST Act.", concept: "Employee Services" },
+                { question: "What is the GST status of \"sale of land and sale of building\" according to Schedule III?", answer: "Sale of land is treated as neither a supply of goods nor a supply of services. Sale of building is also excluded from supply, subject to the condition that the entire consideration is received after the completion certificate or first occupation, as per Schedule II.", concept: "Sale of Land and Building" },
+                { question: "What are \"specified actionable claims,\" and how are they treated under GST compared to other actionable claims?", answer: "Specified actionable claims include those involved in betting, casinos, gambling, horse racing, lottery, or online money gaming. Only these specified actionable claims are treated as supply; all other actionable claims are outside the ambit of supply.", concept: "Specified Actionable Claims" },
+                { question: "What is the GST treatment for the \"grant of alcoholic liquor licence by State Governments\"?", answer: "Services by way of grant of alcoholic liquor licence by the State Governments are specifically notified to be treated neither as a supply of goods nor as a supply of service, even though a licence fee is charged.", concept: "Liquor License" },
+                { question: "How is the inter-State movement of various modes of conveyance (like trucks, buses) between distinct persons generally treated for GST purposes?", answer: "Inter-State movement of various modes of conveyance, between distinct persons, for purposes like carrying goods/passengers or repairs/maintenance, is generally treated as 'neither a supply of goods nor supply of service' and thus not leviable to IGST, unless moved for further supply of the same conveyance.", concept: "Movement of Conveyance" },
+                { question: "What are the two additional conditions, beyond merely being a \"supply,\" that must be satisfied for an activity to attract GST?", answer: "For a supply to attract GST, two additional conditions are that the supply must be made by a \"taxable person\" and the supply itself must be a \"taxable supply.\"", concept: "Additional Conditions" },
+                { question: "Define \"Composite Supply\" under GST.", answer: "A composite supply means a supply made by a taxable person to a recipient that comprises two or more taxable supplies of goods or services or both, which are naturally bundled and supplied in conjunction with each other in the ordinary course of business, with one being the principal supply.", concept: "Composite Supply" },
+                { question: "How is the tax liability on a composite supply determined?", answer: "A composite supply comprising two or more supplies, one of which is a principal supply, is treated as a supply of such principal supply. Consequently, the entire value of the composite supply is taxed at the GST rate applicable to the principal supply.", concept: "Composite Supply Tax" },
+                { question: "What is a \"Mixed Supply,\" and how is its tax liability determined?", answer: "A mixed supply means two or more individual supplies of goods or services, or any combination thereof, made for a single price, which are not naturally bundled and do not constitute a composite supply. Its tax liability is determined by treating it as the supply that attracts the highest rate of tax among its components.", concept: "Mixed Supply" }
+            ];
+            
+            // DOM elements
+            const flashcardElement = document.getElementById('flashcard');
+            const questionElement = document.querySelector('.question');
+            const answerElement = document.querySelector('.answer');
+            const conceptElement = document.querySelector('.concept');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const flipBtn = document.getElementById('flip-btn');
+            const currentCardElement = document.getElementById('current-card');
+            const totalCardsElement = document.getElementById('total-cards');
+            const progressBar = document.getElementById('progress-bar');
+            
+            // Initialize variables
+            let currentCardIndex = 0;
+            totalCardsElement.textContent = flashcards.length;
+            
+            // Update progress bar
+            function updateProgressBar() {
+                const progress = ((currentCardIndex + 1) / flashcards.length) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            // Display current card
+            function displayCard() {
+                const currentCard = flashcards[currentCardIndex];
+                questionElement.textContent = currentCard.question;
+                answerElement.textContent = currentCard.answer;
+                conceptElement.textContent = currentCard.concept;
+                currentCardElement.textContent = currentCardIndex + 1;
+                
+                // Reset card to front
+                flashcardElement.classList.remove('flipped');
+                
+                // Update progress
+                updateProgressBar();
+            }
+            
+            // Next card
+            nextBtn.addEventListener('click', function() {
+                currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+                displayCard();
+            });
+            
+            // Previous card
+            prevBtn.addEventListener('click', function() {
+                currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
+                displayCard();
+            });
+            
+            // Flip card
+            flipBtn.addEventListener('click', function() {
+                flashcardElement.classList.toggle('flipped');
+            });
+            
+            // Also flip when clicking on the card
+            flashcardElement.addEventListener('click', function() {
+                flashcardElement.classList.toggle('flipped');
+            });
+            
+            // Initialize
+            displayCard();
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                } else if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === ' ' || e.key === 'Enter') {
+                    flashcardElement.classList.toggle('flipped');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
